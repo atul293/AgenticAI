@@ -41,11 +41,9 @@ const AuthForm = () => {
       if (error) {
         console.error('Sign in error:', error);
         if (error.message.includes('Invalid login credentials') || error.message.includes('invalid_credentials')) {
-          throw new Error('Invalid email or password. Please check your credentials and try again. If you don\'t have an account, please contact your administrator.');
+          throw new Error('Invalid email or password. Please check your credentials and try again.');
         } else if (error.message.includes('Email not confirmed')) {
           throw new Error('Please check your email and click the confirmation link before signing in.');
-        } else if (error.message.includes('Missing Supabase environment variables')) {
-          throw new Error('Application configuration error. Please contact your administrator.');
         } else {
           throw error;
         }
